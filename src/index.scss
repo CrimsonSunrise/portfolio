@@ -43,34 +43,3 @@ body {
 	margin: 0;
 	user-select: none;
 }
-
-$d: 2em;
-$r: 0.5 * $d;
-$g: $d * (math.sqrt(2) - 1);
-$s: $d + $g;
-$p: $r/3;
-$q: 2 * $p;
-$primaryColor: #fff;
-$secondaryColor: rgba(238, 238, 238, 0.3);
-
-// html {
-// 	--sl: calc(#{$q} + 1px) calc(#{$r} + -0.5px),
-// 		transparent calc(#{$r} + 0.5px);
-// 	background: radial-gradient(
-// 				$primaryColor $p,
-// 				$secondaryColor calc(#{$p} + 1px) $q,
-// 				$primaryColor var(--sl)
-// 			)
-// 			0.5 * $s 0.5 * $s,
-// 		repeating-conic-gradient($secondaryColor 0% 25%, transparent 0% 50%)
-// 			0.25 * $s 0.25 * $s,
-// 		radial-gradient(
-// 			$secondaryColor $p,
-// 			$primaryColor calc(#{$p} + 1px) $q,
-// 			$secondaryColor var(--sl)
-// 		);
-// 	background-size: $s $s, 2 * $s 2 * $s;
-// 	background-blend-mode: lighten;
-// }
-
-
