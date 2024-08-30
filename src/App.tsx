@@ -462,40 +462,38 @@ function App() {
 	const handleOnMove = (e: any) => {
 		if (isDraggingDown) setIsDraggingMove(true);
 
-		if (track.current?.dataset.mouseDownAt === "0") return;
+		if (track.current.dataset.mouseDownAt === "0") return;
 
-		const mouseDelta = parseFloat(track.current?.dataset.mouseDownAt) - e.clientX,
+		const mouseDelta =
+				parseFloat(track.current.dataset.mouseDownAt) - e.clientX,
 			maxDelta = window.innerWidth / draggingSpeed;
 
-		const percentage = (mouseDelta / maxDelta) * -100,
-			nextPercentageUnconstrained =
-				parseFloat(track.current?.dataset.prevPercentage) + percentage,
-			nextPercentage = Math.max(
-				Math.min(nextPercentageUnconstrained, 0),
-				-100
-			);
-        
-        if (track.current)
-		    track.current.dataset.percentage = nextPercentage;
-
-		track.current?.animate(
-			{
-				transform: `translate(${nextPercentage}%, -50%)`,
-			},
-			{ duration: 1200, fill: "forwards" }
+		const percentage = (mouseDelta / maxDelta) * -100;
+		const nextPercentageUnconstrained =
+			parseFloat(track.current.dataset.prevPercentage) + percentage;
+		const nextPercentage = Math.max(
+			Math.min(nextPercentageUnconstrained, 0),
+			-100
 		);
 
-        if (track.current) {
-            for (const image of track.current.getElementsByClassName("image")) {
-                image.animate(
-                    {
-                        objectPosition: `${100 + nextPercentage}% center`,
-                    },
-                    { duration: 1200, fill: "forwards" }
-                );
-            }
-        }
-		
+		if (track.current) track.current.dataset.percentage = nextPercentage;
+
+		if (track.current) {
+			track.current.animate(
+				{
+					transform: `translate(${nextPercentage}%, -50%)`,
+				},
+				{ duration: 1200, fill: "forwards" }
+			);
+			for (const image of track.current.getElementsByClassName("image")) {
+				image.animate(
+					{
+						objectPosition: `${100 + nextPercentage}% center`,
+					},
+					{ duration: 1200, fill: "forwards" }
+				);
+			}
+		}
 	};
 
 	window.onmousedown = (e) => handleOnDown(e);
@@ -765,7 +763,7 @@ function App() {
 						<div className="carousel-wrapper">
 							<div
 								id="image-track"
-                                ref={track}
+								ref={track}
 								data-mouse-down-at="0"
 								data-prev-percentage="0"
 							>
