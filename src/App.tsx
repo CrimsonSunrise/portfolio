@@ -108,8 +108,10 @@ const projects = [
 			<>
 				<p>
 					This is a simple React Native App to demonstrate how Shared
-					Elements transition works using Navigation.\nI've utilized
-					the{" "}
+					Elements transition works using Navigation.
+				</p>
+				<p>
+					I'm using the{" "}
 					<a href="https://pokeapi.co/docs/v2" target="_blank">
 						Pokémon API
 					</a>{" "}
@@ -438,19 +440,19 @@ function App() {
 		return gradientRef.current.destroy;
 	}, [canvasRef.current]);
 
-	const track = document.getElementById("image-track") as any;
+	const track = useRef(document.getElementById("image-track")) as any;
 
 	const [isDraggingDown, setIsDraggingDown] = useState(false);
 	const [isDraggingMove, setIsDraggingMove] = useState(false);
 
 	const handleOnDown = (e: any) => {
-		track.dataset.mouseDownAt = e.clientX;
+		track.current.dataset.mouseDownAt = e.clientX;
 		setIsDraggingDown(true);
 	};
 
 	const handleOnUp = (_: any) => {
-		track.dataset.mouseDownAt = "0";
-		track.dataset.prevPercentage = track.dataset.percentage;
+		track.current.dataset.mouseDownAt = "0";
+		track.current.dataset.prevPercentage = track.current.dataset.percentage;
 		setIsDraggingDown(false);
 		setIsDraggingMove(false);
 	};
@@ -460,36 +462,40 @@ function App() {
 	const handleOnMove = (e: any) => {
 		if (isDraggingDown) setIsDraggingMove(true);
 
-		if (track.dataset.mouseDownAt === "0") return;
+		if (track.current?.dataset.mouseDownAt === "0") return;
 
-		const mouseDelta = parseFloat(track.dataset.mouseDownAt) - e.clientX,
+		const mouseDelta = parseFloat(track.current?.dataset.mouseDownAt) - e.clientX,
 			maxDelta = window.innerWidth / draggingSpeed;
 
 		const percentage = (mouseDelta / maxDelta) * -100,
 			nextPercentageUnconstrained =
-				parseFloat(track.dataset.prevPercentage) + percentage,
+				parseFloat(track.current?.dataset.prevPercentage) + percentage,
 			nextPercentage = Math.max(
 				Math.min(nextPercentageUnconstrained, 0),
 				-100
 			);
+        
+        if (track.current)
+		    track.current.dataset.percentage = nextPercentage;
 
-		track.dataset.percentage = nextPercentage;
-
-		track.animate(
+		track.current?.animate(
 			{
 				transform: `translate(${nextPercentage}%, -50%)`,
 			},
 			{ duration: 1200, fill: "forwards" }
 		);
 
-		for (const image of track.getElementsByClassName("image")) {
-			image.animate(
-				{
-					objectPosition: `${100 + nextPercentage}% center`,
-				},
-				{ duration: 1200, fill: "forwards" }
-			);
-		}
+        if (track.current) {
+            for (const image of track.current.getElementsByClassName("image")) {
+                image.animate(
+                    {
+                        objectPosition: `${100 + nextPercentage}% center`,
+                    },
+                    { duration: 1200, fill: "forwards" }
+                );
+            }
+        }
+		
 	};
 
 	window.onmousedown = (e) => handleOnDown(e);
@@ -759,6 +765,7 @@ function App() {
 						<div className="carousel-wrapper">
 							<div
 								id="image-track"
+                                ref={track}
 								data-mouse-down-at="0"
 								data-prev-percentage="0"
 							>
