@@ -37,6 +37,7 @@ import Img2021 from "./assets/images/2021.png";
 import Img2022 from "./assets/images/2022.png";
 import ImgMoon from "./assets/images/moon.jpg";
 import Img2023 from "./assets/images/2023.jpg";
+import MilkyWay from "./assets/images/milkyway.jpg";
 import { Footer } from "antd/es/layout/layout";
 
 const { Title, Text } = Typography;
@@ -277,6 +278,12 @@ function App() {
 	};
 
 	const images = [
+        {
+            key: uuidv4(),
+            text: "Photo of the core of our galaxy",
+            image: MilkyWay,
+            type: "photo"
+        },
 		{
 			key: uuidv4(),
 			text: "Caldwell 76 (Scorpius Constellation)",
