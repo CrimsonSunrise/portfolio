@@ -12,7 +12,6 @@ import "./App.scss";
 import { useEffect, useRef, useState } from "react";
 import "react-photo-view/dist/react-photo-view.css";
 import { PhotoProvider, PhotoView } from "react-photo-view";
-import { LazyLoadImage } from 'react-lazy-load-image-component';
 import {
 	Layout,
 	Tag,
@@ -20,11 +19,8 @@ import {
 	theme,
 	Button,
 	Typography,
-	Image,
-	Space,
 } from "antd";
 import { AnimatePresence, motion } from "framer-motion";
-import { v4 as uuidv4 } from "uuid";
 import { NeatGradient } from "@firecms/neat";
 
 import Img01 from "./assets/images/01.jpg";
@@ -36,13 +32,6 @@ import Img06 from "./assets/images/06.jpg";
 import Img07 from "./assets/images/07.jpg";
 import Img08 from "./assets/images/08.jpg";
 import Img09 from "./assets/images/09.jpg";
-import Img24082024 from "./assets/images/24082024.jpg";
-import Img2020 from "./assets/images/2020.png";
-import Img2021 from "./assets/images/2021.png";
-import Img2022 from "./assets/images/2022.png";
-import ImgMoon from "./assets/images/moon.jpg";
-import Img2023 from "./assets/images/2023.jpg";
-import MilkyWay from "./assets/images/milkyway.jpg";
 import { Footer } from "antd/es/layout/layout";
 
 const { Title, Text } = Typography;
@@ -237,30 +226,6 @@ const projects = [
 		),
 	},
 ];
-
-// const images = [
-// 	"https://image.lexica.art/md2_webp/2756fe12-fa99-4ec9-a7cb-628250188834",
-// 	"https://image.lexica.art/sm2_webp/a63f4437-2938-46dc-a15e-a992ad0ee7ce",
-// 	"https://image.lexica.art/md2_webp/7131d361-ab5e-4593-ad82-33fa0bf49838",
-// 	"https://image.lexica.art/md2_webp/7fe4fae8-c15c-4c53-bc90-2074058d09f5",
-// 	"https://image.lexica.art/md2_webp/db6c3faf-7268-4669-8de6-fe88d66e0b02",
-// 	"https://image.lexica.art/md2_webp/5b9b0048-2e7b-4e60-90a4-a48a0c6f9853",
-// 	"https://image.lexica.art/md2_webp/2f4f45a5-99b2-41cc-a213-d5c8fc12899a",
-// 	"https://image.lexica.art/md2_webp/626ed224-aed0-4b89-8f6e-b8150d862236",
-// 	"https://image.lexica.art/md2_webp/90cb2d40-fddb-4e44-8c53-9b5d25b6b69f",
-// 	"https://image.lexica.art/md2_webp/cf430d0c-b719-40eb-9b9c-c10a91f9f326",
-// 	"https://image.lexica.art/md2_webp/1eea8ca3-3a9f-4b49-800c-139e56b150c2",
-// 	"https://image.lexica.art/md2_webp/09aa964b-77ea-4ed7-9220-b6edd05284ae",
-// 	"https://image.lexica.art/md2_webp/a0b7c281-aa6c-409a-aa18-ae91bcb280b1",
-// 	"https://image.lexica.art/md2_webp/2fbedfdb-3ab9-4379-b418-355471cac0a8",
-// 	"https://image.lexica.art/md2_webp/01cb4c33-94fe-43a1-a9a2-c349523518bf",
-// 	"https://image.lexica.art/md2_webp/82cd2e9f-21f4-4a50-b57d-760d3e166633",
-// 	"https://image.lexica.art/md2_webp/1ae5f121-5a99-48d7-be85-f9b3085724a7",
-// 	"https://image.lexica.art/md2_webp/3cbf9551-8aa9-47c7-8589-eaac886ad3b8",
-// 	"https://image.lexica.art/md2_webp/71512d32-2b47-446f-8574-1a536050bdf4",
-// 	"https://image.lexica.art/md2_webp/c4053816-2d12-4841-940e-6710dfe084cb",
-// 	"https://image.lexica.art/md2_webp/2d189156-9f7f-4fa4-a110-5843ea2a1bbc",
-// ];
 
 const images = [
 	{
@@ -501,51 +466,6 @@ function App() {
 		}
 	};
 
-	// const images = [
-	// 	{
-	// 		key: uuidv4(),
-	// 		text: "Photo of the core of our galaxy",
-	// 		image: MilkyWay,
-	// 		type: "photo",
-	// 	},
-	// 	{
-	// 		key: uuidv4(),
-	// 		text: "Caldwell 76 (Scorpius Constellation)",
-	// 		image: Img24082024,
-	// 		type: "photo",
-	// 	},
-	// 	{
-	// 		key: uuidv4(),
-	// 		text: "Waning Gibbous Moon",
-	// 		image: ImgMoon,
-	// 		type: "photo",
-	// 	},
-	// 	{
-	// 		key: uuidv4(),
-	// 		text: "Tree on a Brain",
-	// 		image: Img2022,
-	// 		type: "drawing",
-	// 	},
-	// 	{
-	// 		key: uuidv4(),
-	// 		text: "A Cute Axolotl",
-	// 		image: Img2021,
-	// 		type: "drawing",
-	// 	},
-	// 	{
-	// 		key: uuidv4(),
-	// 		text: "Thor in his Throne",
-	// 		image: Img2020,
-	// 		type: "drawing",
-	// 	},
-	// 	{
-	// 		key: uuidv4(),
-	// 		text: "Open Book",
-	// 		image: Img2023,
-	// 		type: "drawing",
-	// 	},
-	// ] as any;
-
 	const canvasRef = useRef<HTMLCanvasElement | null>(null);
 	const gradientRef = useRef<NeatGradient | null>(null);
 
@@ -670,74 +590,6 @@ function App() {
 
 		return gradientRef.current.destroy;
 	}, [canvasRef.current]);
-
-	const track = useRef(document.getElementById("image-track")) as any;
-
-	const [isDraggingDown, setIsDraggingDown] = useState(false);
-	const [isDraggingMove, setIsDraggingMove] = useState(false);
-
-	// const handleOnDown = (e: any) => {
-	// 	track.current.dataset.mouseDownAt = e.clientX;
-	// 	setIsDraggingDown(true);
-	// };
-
-	// const handleOnUp = (_: any) => {
-	// 	track.current.dataset.mouseDownAt = "0";
-	// 	track.current.dataset.prevPercentage = track.current.dataset.percentage;
-	// 	setIsDraggingDown(false);
-	// 	setIsDraggingMove(false);
-	// };
-
-	const draggingSpeed = 1;
-
-	// const handleOnMove = (e: any) => {
-	// 	if (isDraggingDown) setIsDraggingMove(true);
-
-	// 	if (track.current.dataset.mouseDownAt === "0") return;
-
-	// 	const mouseDelta =
-	// 			parseFloat(track.current.dataset.mouseDownAt) - e.clientX,
-	// 		maxDelta = window.innerWidth / draggingSpeed;
-
-	// 	const percentage = (mouseDelta / maxDelta) * -100;
-	// 	const nextPercentageUnconstrained =
-	// 		parseFloat(track.current.dataset.prevPercentage) + percentage;
-	// 	const nextPercentage = Math.max(
-	// 		Math.min(nextPercentageUnconstrained, 0),
-	// 		-100
-	// 	);
-
-	// 	if (track.current) track.current.dataset.percentage = nextPercentage;
-
-	// 	if (track.current) {
-	// 		track.current.animate(
-	// 			{
-	// 				transform: `translate(${nextPercentage}%, -50%)`,
-	// 			},
-	// 			{ duration: 1200, fill: "forwards" }
-	// 		);
-	// 		for (const image of track.current.getElementsByClassName("image")) {
-	// 			image.animate(
-	// 				{
-	// 					objectPosition: `${100 + nextPercentage}% center`,
-	// 				},
-	// 				{ duration: 1200, fill: "forwards" }
-	// 			);
-	// 		}
-	// 	}
-	// };
-
-	// window.onmousedown = (e) => handleOnDown(e);
-
-	// window.ontouchstart = (e) => handleOnDown(e.touches[0]);
-
-	// window.onmouseup = (e) => handleOnUp(e);
-
-	// window.ontouchend = (e) => handleOnUp(e.touches[0]);
-
-	// window.onmousemove = (e) => handleOnMove(e);
-
-	// window.ontouchmove = (e) => handleOnMove(e.touches[0]);
 
 	return (
 		<ConfigProvider
