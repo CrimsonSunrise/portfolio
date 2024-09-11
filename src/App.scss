@@ -25,7 +25,7 @@
 	.hero {
 		position: relative;
 		height: 480px;
-		background-color: green;
+		// background-color: green;
 		border-radius: 6px;
 		overflow: hidden;
 		box-shadow: rgba(99, 99, 99, 0.1) 0px 3px 15px 3px;
@@ -277,7 +277,8 @@
 		left: -25%;
 		margin-top: 40px;
 		position: relative; /* Necessário para calcular corretamente a posição do container */
-		width: 100%; /* Ocupa 100% da largura da div pai */
+		// width: 100%; /* Ocupa 100% da largura da div pai */
+		width: clamp(200px, 1200px, 90vw);
 		height: 100%;
 		left: 50%; /* Move o container para o centro */
 		transform: translateX(
@@ -285,81 +286,59 @@
 		); /* Ajusta a posição para alinhar com o centro da tela */
 		max-width: none; /* Remove qualquer limitação de largura que a div pai possa ter */
 		padding-bottom: 40px;
+		gap: 0;
+		text-align: center;
 
-		.carousel-wrapper {
-			margin-top: 50px;
-			height: 520px;
-			position: relative; /* Define o posicionamento relativo */
-			width: 100vw; /* Ocupa 100% da largura da viewport */
-			left: 50%; /* Alinha à esquerda em relação ao centro */
-			right: 50%; /* Alinha à direita em relação ao centro */
-			margin-left: -50vw; /* Move a div para começar na borda esquerda da tela */
-			margin-right: -50vw; /* Move a div para terminar na borda direita da tela */
+		h3 {
+			margin: 0;
+			padding: 0;
+			margin-bottom: 40px;
 		}
 
-		#image-track {
-			display: flex;
-			gap: 4vmin;
-			position: absolute;
-			left: 50%;
-			top: 50%;
-			transform: translate(0%, -50%);
-			user-select: none; /* -- Prevent image highlighting -- */
-		}
+		.image-gallery {
+			// background-color: red;
+			// width: 100%;
+			columns: 220px;
+			gap: 10px;
 
-		.image-holder {
-			position: relative;
-			border-radius: 5px;
-			overflow: hidden;
-
-			.image-info {
-				pointer-events: none;
-				position: absolute;
-				bottom: 0;
-				width: 100%;
-				padding: 10px;
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				gap: 10px;
+			.image-holder {
+				transition: 0.1s all;
+				position: relative;
+				// min-height: 50px;
+				cursor: pointer;
 
 				span {
-					text-align: center;
-					background-color: #ffffff;
+					transition: 0.1s all;
+					position: absolute;
+					background-color: rgba(255, 255, 255, 1);
+					right: 5px;
+					top: 5px;
+					padding: 4px 5px;
 					color: #444;
-					padding: 5px 10px;
 					border-radius: 5px;
-					box-shadow: rgba(99, 99, 99, 0.4) 0px 3px 15px 3px;
+					font-size: 0.8rem;
+					opacity: 0;
+					pointer-events: none;
+					z-index: 1;
 				}
 
-				.type {
-					position: relative;
-					height: 20px;
-					background-color: #ffffff91;
-					color: #000;
-					box-shadow: 0px 2px 3px 0px rgba(99, 99, 99, 0.2);
-					border-radius: 20px;
-					padding: 2px 10px;
-					font-size: 0.9em;
+				img {
+					transition: 0.1s all;
+					width: 100%;
+					height: auto;
+					border-radius: 10px;
+					margin-bottom: 3px;
+					border: 1px solid rgba(255, 255, 255, 0.103);
 				}
 			}
-		}
 
-		&::before {
-			content: "Drag to slide images";
-			position: absolute;
-			color: rgba(148, 148, 148, 0.432);
-			top: 58%;
-			left: 20%;
-		}
+			.image-holder:hover {
+				scale: 1.03;
 
-		#image-track .image {
-			width: 40vmin;
-			height: 56vmin;
-			object-fit: cover;
-			object-position: 100% center;
-			cursor: hand;
-			box-shadow: rgba(63, 63, 63, 0.2) 0px 3px 15px 3px;
+				span {
+					opacity: 1;
+				}
+			}
 		}
 	}
 }
@@ -429,35 +408,35 @@
 					top: 10%;
 					width: 100vw;
 					height: auto;
-                    flex-direction: column;
-                    align-items: center;
-                    padding: 20px;
-                    border-radius: 0;
+					flex-direction: column;
+					align-items: center;
+					padding: 20px;
+					border-radius: 0;
 
 					img {
 						width: 100px;
-                        height: 100px;
-                        border-radius: 5px;
+						height: 100px;
+						border-radius: 5px;
 					}
 
 					.project-preview-content {
 						gap: 20px;
 
 						h4 {
-                            margin: 0;
+							margin: 0;
 						}
 
 						.preview-description {
 							text-indent: 0;
-                            text-align: center;
+							text-align: center;
 						}
 
 						.preview-tags {
-                            justify-content: center;
-                            flex-wrap: wrap;
+							justify-content: center;
+							flex-wrap: wrap;
 
 							.preview-tag {
-                                flex-shrink: 0;
+								flex-shrink: 0;
 							}
 						}
 
@@ -466,7 +445,7 @@
 							bottom: 0;
 							left: 0px;
 							right: 0px;
-                            margin-top: 20px;
+							margin-top: 20px;
 							justify-content: center;
 							gap: 10px;
 						}
@@ -476,12 +455,36 @@
 		}
 
 		.extra {
-			.carousel-wrapper {
-				height: 300px;
+			.image-gallery {
+				// columns: 2;
+				// gap: 10px;
+				columns: 200px;
 			}
-			#image-track {
-				top: 80px;
+
+			.image-holder {
+				position: relative;
+				cursor: pointer;
+
+				span {
+					opacity: 1;
+				}
+			}
+
+			img {
+				margin-bottom: 5px;
 			}
 		}
+	}
+}
+
+@media screen and (max-width: 960px) {
+	.foo {
+		columns: 3;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.foo {
+		columns: 2;
 	}
 }

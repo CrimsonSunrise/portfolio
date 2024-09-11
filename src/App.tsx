@@ -5,9 +5,14 @@ import {
 	InstagramOutlined,
 	SunOutlined,
 	MoonOutlined,
+    CameraOutlined,
+    FormatPainterOutlined
 } from "@ant-design/icons";
 import "./App.scss";
 import { useEffect, useRef, useState } from "react";
+import "react-photo-view/dist/react-photo-view.css";
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import {
 	Layout,
 	Tag,
@@ -233,6 +238,225 @@ const projects = [
 	},
 ];
 
+// const images = [
+// 	"https://image.lexica.art/md2_webp/2756fe12-fa99-4ec9-a7cb-628250188834",
+// 	"https://image.lexica.art/sm2_webp/a63f4437-2938-46dc-a15e-a992ad0ee7ce",
+// 	"https://image.lexica.art/md2_webp/7131d361-ab5e-4593-ad82-33fa0bf49838",
+// 	"https://image.lexica.art/md2_webp/7fe4fae8-c15c-4c53-bc90-2074058d09f5",
+// 	"https://image.lexica.art/md2_webp/db6c3faf-7268-4669-8de6-fe88d66e0b02",
+// 	"https://image.lexica.art/md2_webp/5b9b0048-2e7b-4e60-90a4-a48a0c6f9853",
+// 	"https://image.lexica.art/md2_webp/2f4f45a5-99b2-41cc-a213-d5c8fc12899a",
+// 	"https://image.lexica.art/md2_webp/626ed224-aed0-4b89-8f6e-b8150d862236",
+// 	"https://image.lexica.art/md2_webp/90cb2d40-fddb-4e44-8c53-9b5d25b6b69f",
+// 	"https://image.lexica.art/md2_webp/cf430d0c-b719-40eb-9b9c-c10a91f9f326",
+// 	"https://image.lexica.art/md2_webp/1eea8ca3-3a9f-4b49-800c-139e56b150c2",
+// 	"https://image.lexica.art/md2_webp/09aa964b-77ea-4ed7-9220-b6edd05284ae",
+// 	"https://image.lexica.art/md2_webp/a0b7c281-aa6c-409a-aa18-ae91bcb280b1",
+// 	"https://image.lexica.art/md2_webp/2fbedfdb-3ab9-4379-b418-355471cac0a8",
+// 	"https://image.lexica.art/md2_webp/01cb4c33-94fe-43a1-a9a2-c349523518bf",
+// 	"https://image.lexica.art/md2_webp/82cd2e9f-21f4-4a50-b57d-760d3e166633",
+// 	"https://image.lexica.art/md2_webp/1ae5f121-5a99-48d7-be85-f9b3085724a7",
+// 	"https://image.lexica.art/md2_webp/3cbf9551-8aa9-47c7-8589-eaac886ad3b8",
+// 	"https://image.lexica.art/md2_webp/71512d32-2b47-446f-8574-1a536050bdf4",
+// 	"https://image.lexica.art/md2_webp/c4053816-2d12-4841-940e-6710dfe084cb",
+// 	"https://image.lexica.art/md2_webp/2d189156-9f7f-4fa4-a110-5843ea2a1bbc",
+// ];
+
+const images = [
+	{
+		thumb: "gallery/22.webp",
+		description: "",
+		full: "gallery/full/22.webp",
+		type: <CameraOutlined/>,
+	},
+	{
+		thumb: "gallery/10.webp",
+		description: "",
+		full: "gallery/full/10.webp",
+		type: <CameraOutlined/>,
+	},
+	{
+		thumb: "gallery/03.webp",
+		description: "",
+		full: "gallery/full/03.webp",
+		type: <CameraOutlined/>,
+	},
+	{
+		thumb: "gallery/02.webp",
+		description: "",
+		full: "gallery/full/02.webp",
+		type: <CameraOutlined/>,
+	},
+	{
+		thumb: "gallery/04.webp",
+		description: "",
+		full: "gallery/full/04.webp",
+		type: <CameraOutlined/>,
+	},
+	{
+		thumb: "gallery/05.webp",
+		description: "",
+		full: "gallery/full/05.webp",
+		type: <CameraOutlined/>,
+	},
+	{
+		thumb: "gallery/06.webp",
+		description: "",
+		full: "gallery/full/06.webp",
+		type: <CameraOutlined/>,
+	},
+	{
+		thumb: "gallery/34.webp",
+		description: "",
+		full: "gallery/full/34.webp",
+		type: <FormatPainterOutlined/>,
+	},
+	{
+		thumb: "gallery/16.webp",
+		description: "",
+		full: "gallery/full/16.webp",
+		type: <CameraOutlined/>,
+	},
+	{
+		thumb: "gallery/07.webp",
+		description: "",
+		full: "gallery/full/07.webp",
+		type: <CameraOutlined/>,
+	},
+	{
+		thumb: "gallery/14.webp",
+		description: "",
+		full: "gallery/full/14.webp",
+		type: <CameraOutlined/>,
+	},
+	{
+		thumb: "gallery/15.webp",
+		description: "",
+		full: "gallery/full/15.webp",
+		type: <CameraOutlined/>,
+	},
+	{
+		thumb: "gallery/25.webp",
+		description: "",
+		full: "gallery/full/25.webp",
+		type: <CameraOutlined/>,
+	},
+	{
+		thumb: "gallery/12.webp",
+		description: "",
+		full: "gallery/full/12.webp",
+		type: <CameraOutlined/>,
+	},
+	{
+		thumb: "gallery/19.webp",
+		description: "",
+		full: "gallery/full/19.webp",
+		type: <CameraOutlined/>,
+	},
+	{
+		thumb: "gallery/20.webp",
+		description: "",
+		full: "gallery/full/20.webp",
+		type: <CameraOutlined/>,
+	},
+	{
+		thumb: "gallery/21.webp",
+		description: "",
+		full: "gallery/full/21.webp",
+		type: <CameraOutlined/>,
+	},
+	{
+		thumb: "gallery/17.webp",
+		description: "",
+		full: "gallery/full/17.webp",
+		type: <CameraOutlined/>,
+	},
+	{
+		thumb: "gallery/01.webp",
+		description: "",
+		full: "gallery/full/01.webp",
+		type: <CameraOutlined/>,
+	},
+	{
+		thumb: "gallery/30.webp",
+		description: "",
+		full: "gallery/full/30.webp",
+		type: <FormatPainterOutlined/>,
+	},
+	{
+		thumb: "gallery/23.webp",
+		description: "",
+		full: "gallery/full/23.webp",
+		type: <CameraOutlined/>,
+	},
+	{
+		thumb: "gallery/24.webp",
+		description: "",
+		full: "gallery/full/24.webp",
+		type: <CameraOutlined/>,
+	},
+	{
+		thumb: "gallery/13.webp",
+		description: "",
+		full: "gallery/full/13.webp",
+		type: <CameraOutlined/>,
+	},
+	{
+		thumb: "gallery/18.webp",
+		description: "",
+		full: "gallery/full/18.webp",
+		type: <CameraOutlined/>,
+	},
+	{
+		thumb: "gallery/26.webp",
+		description: "",
+		full: "gallery/full/26.webp",
+		type: <CameraOutlined/>,
+	},
+	{
+		thumb: "gallery/27.webp",
+		description: "",
+		full: "gallery/full/27.webp",
+		type: <CameraOutlined/>,
+	},
+	{
+		thumb: "gallery/28.webp",
+		description: "",
+		full: "gallery/full/28.webp",
+		type: <CameraOutlined/>,
+	},
+	{
+		thumb: "gallery/29.webp",
+		description: "",
+		full: "gallery/full/29.webp",
+		type: <CameraOutlined/>,
+	},
+	{
+		thumb: "gallery/31.webp",
+		description: "",
+		full: "gallery/full/31.webp",
+		type: <CameraOutlined/>,
+	},
+	{
+		thumb: "gallery/32.webp",
+		description: "",
+		full: "gallery/full/32.webp",
+		type: <CameraOutlined/>,
+	},
+	{
+		thumb: "gallery/33.webp",
+		description: "",
+		full: "gallery/full/33.webp",
+		type: <FormatPainterOutlined/>,
+	},
+	{
+		thumb: "gallery/11.webp",
+		description: "",
+		full: "gallery/full/11.webp",
+		type: <CameraOutlined/>,
+	},
+];
+
 function App() {
 	const { defaultAlgorithm, darkAlgorithm } = theme;
 	const [isDarkMode, setIsDarkMode] = useState(false);
@@ -277,50 +501,50 @@ function App() {
 		}
 	};
 
-	const images = [
-        {
-            key: uuidv4(),
-            text: "Photo of the core of our galaxy",
-            image: MilkyWay,
-            type: "photo"
-        },
-		{
-			key: uuidv4(),
-			text: "Caldwell 76 (Scorpius Constellation)",
-			image: Img24082024,
-			type: "photo",
-		},
-		{
-			key: uuidv4(),
-			text: "Waning Gibbous Moon",
-			image: ImgMoon,
-			type: "photo",
-		},
-		{
-			key: uuidv4(),
-			text: "Tree on a Brain",
-			image: Img2022,
-			type: "drawing",
-		},
-		{
-			key: uuidv4(),
-			text: "A Cute Axolotl",
-			image: Img2021,
-			type: "drawing",
-		},
-		{
-			key: uuidv4(),
-			text: "Thor in his Throne",
-			image: Img2020,
-			type: "drawing",
-		},
-		{
-			key: uuidv4(),
-			text: "Open Book",
-			image: Img2023,
-			type: "drawing",
-		},
-	] as any;
+	// const images = [
+	// 	{
+	// 		key: uuidv4(),
+	// 		text: "Photo of the core of our galaxy",
+	// 		image: MilkyWay,
+	// 		type: "photo",
+	// 	},
+	// 	{
+	// 		key: uuidv4(),
+	// 		text: "Caldwell 76 (Scorpius Constellation)",
+	// 		image: Img24082024,
+	// 		type: "photo",
+	// 	},
+	// 	{
+	// 		key: uuidv4(),
+	// 		text: "Waning Gibbous Moon",
+	// 		image: ImgMoon,
+	// 		type: "photo",
+	// 	},
+	// 	{
+	// 		key: uuidv4(),
+	// 		text: "Tree on a Brain",
+	// 		image: Img2022,
+	// 		type: "drawing",
+	// 	},
+	// 	{
+	// 		key: uuidv4(),
+	// 		text: "A Cute Axolotl",
+	// 		image: Img2021,
+	// 		type: "drawing",
+	// 	},
+	// 	{
+	// 		key: uuidv4(),
+	// 		text: "Thor in his Throne",
+	// 		image: Img2020,
+	// 		type: "drawing",
+	// 	},
+	// 	{
+	// 		key: uuidv4(),
+	// 		text: "Open Book",
+	// 		image: Img2023,
+	// 		type: "drawing",
+	// 	},
+	// ] as any;
 
 	const canvasRef = useRef<HTMLCanvasElement | null>(null);
 	const gradientRef = useRef<NeatGradient | null>(null);
@@ -452,68 +676,68 @@ function App() {
 	const [isDraggingDown, setIsDraggingDown] = useState(false);
 	const [isDraggingMove, setIsDraggingMove] = useState(false);
 
-	const handleOnDown = (e: any) => {
-		track.current.dataset.mouseDownAt = e.clientX;
-		setIsDraggingDown(true);
-	};
+	// const handleOnDown = (e: any) => {
+	// 	track.current.dataset.mouseDownAt = e.clientX;
+	// 	setIsDraggingDown(true);
+	// };
 
-	const handleOnUp = (_: any) => {
-		track.current.dataset.mouseDownAt = "0";
-		track.current.dataset.prevPercentage = track.current.dataset.percentage;
-		setIsDraggingDown(false);
-		setIsDraggingMove(false);
-	};
+	// const handleOnUp = (_: any) => {
+	// 	track.current.dataset.mouseDownAt = "0";
+	// 	track.current.dataset.prevPercentage = track.current.dataset.percentage;
+	// 	setIsDraggingDown(false);
+	// 	setIsDraggingMove(false);
+	// };
 
 	const draggingSpeed = 1;
 
-	const handleOnMove = (e: any) => {
-		if (isDraggingDown) setIsDraggingMove(true);
+	// const handleOnMove = (e: any) => {
+	// 	if (isDraggingDown) setIsDraggingMove(true);
 
-		if (track.current.dataset.mouseDownAt === "0") return;
+	// 	if (track.current.dataset.mouseDownAt === "0") return;
 
-		const mouseDelta =
-				parseFloat(track.current.dataset.mouseDownAt) - e.clientX,
-			maxDelta = window.innerWidth / draggingSpeed;
+	// 	const mouseDelta =
+	// 			parseFloat(track.current.dataset.mouseDownAt) - e.clientX,
+	// 		maxDelta = window.innerWidth / draggingSpeed;
 
-		const percentage = (mouseDelta / maxDelta) * -100;
-		const nextPercentageUnconstrained =
-			parseFloat(track.current.dataset.prevPercentage) + percentage;
-		const nextPercentage = Math.max(
-			Math.min(nextPercentageUnconstrained, 0),
-			-100
-		);
+	// 	const percentage = (mouseDelta / maxDelta) * -100;
+	// 	const nextPercentageUnconstrained =
+	// 		parseFloat(track.current.dataset.prevPercentage) + percentage;
+	// 	const nextPercentage = Math.max(
+	// 		Math.min(nextPercentageUnconstrained, 0),
+	// 		-100
+	// 	);
 
-		if (track.current) track.current.dataset.percentage = nextPercentage;
+	// 	if (track.current) track.current.dataset.percentage = nextPercentage;
 
-		if (track.current) {
-			track.current.animate(
-				{
-					transform: `translate(${nextPercentage}%, -50%)`,
-				},
-				{ duration: 1200, fill: "forwards" }
-			);
-			for (const image of track.current.getElementsByClassName("image")) {
-				image.animate(
-					{
-						objectPosition: `${100 + nextPercentage}% center`,
-					},
-					{ duration: 1200, fill: "forwards" }
-				);
-			}
-		}
-	};
+	// 	if (track.current) {
+	// 		track.current.animate(
+	// 			{
+	// 				transform: `translate(${nextPercentage}%, -50%)`,
+	// 			},
+	// 			{ duration: 1200, fill: "forwards" }
+	// 		);
+	// 		for (const image of track.current.getElementsByClassName("image")) {
+	// 			image.animate(
+	// 				{
+	// 					objectPosition: `${100 + nextPercentage}% center`,
+	// 				},
+	// 				{ duration: 1200, fill: "forwards" }
+	// 			);
+	// 		}
+	// 	}
+	// };
 
-	window.onmousedown = (e) => handleOnDown(e);
+	// window.onmousedown = (e) => handleOnDown(e);
 
-	window.ontouchstart = (e) => handleOnDown(e.touches[0]);
+	// window.ontouchstart = (e) => handleOnDown(e.touches[0]);
 
-	window.onmouseup = (e) => handleOnUp(e);
+	// window.onmouseup = (e) => handleOnUp(e);
 
-	window.ontouchend = (e) => handleOnUp(e.touches[0]);
+	// window.ontouchend = (e) => handleOnUp(e.touches[0]);
 
-	window.onmousemove = (e) => handleOnMove(e);
+	// window.onmousemove = (e) => handleOnMove(e);
 
-	window.ontouchmove = (e) => handleOnMove(e.touches[0]);
+	// window.ontouchmove = (e) => handleOnMove(e.touches[0]);
 
 	return (
 		<ConfigProvider
@@ -556,7 +780,7 @@ function App() {
 							</h1>
 							<span className="bottom-title">
 								I'm João Alan, also know on the web as Crimson
-								Sunrise. An enthusiastic developer fascinated by
+								Sunrise. A Full Stack developer fascinated by
 								possibilities.
 							</span>
 						</div>
@@ -766,55 +990,27 @@ function App() {
 
 					<section className="extra">
 						<Title>Because life is not just code 🍃</Title>
+						<Title level={3}>Some crafts of my own</Title>
 
-						<div className="carousel-wrapper">
-							<div
-								id="image-track"
-								ref={track}
-								data-mouse-down-at="0"
-								data-prev-percentage="0"
-							>
-								{images.map((image: any) => {
-									return (
-										<div
-											key={`slider-img${image.text}`}
-											className="image-holder"
-										>
-											<Image
-												key={image.id}
-												draggable="false"
-												preview={
-													isDraggingMove
-														? false
-														: {
-																toolbarRender: (
-																	_,
-																	{}
-																) => (
-																	<Space
-																		size={
-																			12
-																		}
-																		className="toolbar-wrapper"
-																	></Space>
-																),
-														  }
-												}
-												className="image"
+						<PhotoProvider maskOpacity={0.7}>
+							<div className="image-gallery">
+								{images.map((item: any, index: number) => (
+									/* Real image */
+									<div className="image-holder">
+                                        {item.type}
+										<PhotoView key={index} src={item.thumb}>
+											{/* Thumb image */}
+											<img
 												loading="lazy"
-												src={image.image}
+												width="100%"
+												src={item.thumb}
+												alt=""
 											/>
-											<div className="image-info">
-												<Text>{image.text}</Text>
-												<span className="type">
-													{image.type}
-												</span>
-											</div>
-										</div>
-									);
-								})}
+										</PhotoView>
+									</div>
+								))}
 							</div>
-						</div>
+						</PhotoProvider>
 					</section>
 				</div>
 				<Footer
