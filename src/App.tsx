@@ -744,7 +744,7 @@ function App() {
 											<Title level={4}>
 												{selectedId}
 											</Title>
-											<div className="preview-description">
+											<div className="preview-description" style={{ color: "#222" }}>
 												{
 													projects.find(
 														(project: any) =>
